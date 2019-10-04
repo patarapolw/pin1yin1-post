@@ -1,0 +1,32 @@
+{
+  "devDependencies": {
+    "cssnano": "^4.1.10",
+    "gh-pages": "^2.1.1",
+    "sass": "^1.23.0",
+    "typescript": "^3.6.3"
+  },
+  "name": "pin1yin1-post",
+  "description": "Similar to <https://pin1yin1.com>, but uses POST requests, i.e. no string length limit.",
+  "version": "1.0.0",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel web/index.html",
+    "clean": "rm -rf dist",
+    "build": "parcel build --public-url '.' web/index.html",
+    "deploy": "npm run clean && npm run build && gh-pages -d dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Pacharapol Withayasakpunt <patarapolw@gmail.com> (https://polvcode.dev)",
+  "license": "MIT",
+  "browserslist": [
+    "last 4 Chrome versions"
+  ],
+  "dependencies": {
+    "@types/hyperscript": "0.0.3",
+    "@types/xregexp": "^3.0.30",
+    "hyperscript": "^2.0.2",
+    "xregexp": "^4.2.4"
+  }
+}

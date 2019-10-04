@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+      "outDir": "./build/",
+      "sourceMap": true,
+      "strict": true,
+      "noImplicitReturns": true,
+      "noImplicitAny": true,
+      "module": "commonjs",
+      "esModuleInterop": true,
+      "moduleResolution": "node",
+      "target": "esnext",
+      "allowJs": true,
+      "lib": ["es2015", "es2017", "dom"],
+      "allowSyntheticDefaultImports": true,
+      "typeRoots": ["./node_modules/@types", "web/@types"],
+      "resolveJsonModule": true,
+      "experimentalDecorators": true,
+      "noImplicitThis": true
+  },
+  "include": [
+      "web/**/*",
+      "server/**/*"
+  ]
+}
