@@ -1,20 +1,31 @@
 {
   "devDependencies": {
+    "@types/http-proxy-middleware": "^0.19.3",
+    "@types/parcel-bundler": "^1.12.1",
+    "concurrently": "^4.1.2",
     "cssnano": "^4.1.10",
-    "gh-pages": "^2.1.1",
+    "http-proxy-middleware": "^0.20.0",
+    "parcel-bundler": "^1.12.3",
     "sass": "^1.23.0",
+    "ts-node": "^8.4.1",
+    "ts-node-dev": "^1.0.0-pre.43",
     "typescript": "^3.6.3"
   },
   "name": "pin1yin1-post",
   "description": "Similar to <https://pin1yin1.com>, but uses POST requests, i.e. no string length limit.",
   "version": "1.0.0",
   "private": true,
-  "main": "index.js",
+  "main": "build/server.js",
   "scripts": {
-    "start": "parcel web/index.html",
+    "start": "node -r esm .",
+    "dev:server": "ts-node-dev server/server.ts",
+    "dev:parcel": "ts-node server/parcel.ts",
+    "dev": "concurrently 'npm:dev:*'",
     "clean": "rm -rf dist",
-    "build": "parcel build --public-url '.' web/index.html",
-    "deploy": "npm run clean && npm run build && gh-pages -d dist",
+    "build:server": "npm run tsc",
+    "build:parcel": "parcel build --public-url '.' web/index.html",
+    "build": "npm run build:server && npm run build:parcel",
+    "tsc": "tsc -p tsconfig.server.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -24,9 +35,16 @@
     "last 4 Chrome versions"
   ],
   "dependencies": {
+    "@types/better-sqlite3": "^5.4.0",
+    "@types/express": "^4.17.1",
     "@types/hyperscript": "0.0.3",
     "@types/xregexp": "^3.0.30",
+    "better-sqlite3": "^5.4.3",
+    "chinese-to-pinyin": "^1.1.2",
+    "esm": "^3.2.25",
+    "express": "^4.17.1",
     "hyperscript": "^2.0.2",
+    "nodejieba": "^2.3.2",
     "xregexp": "^4.2.4"
   }
 }

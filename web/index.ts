@@ -49,7 +49,7 @@ convertButton.addEventListener("click", () => {
 
 async function fetchJSON(url: string, data: any, method: string = "POST") {
   try {
-    return await (await fetch(new URL(url, "https://zhres.herokuapp.com").href, {
+    return await (await fetch(url, {
       method,
       headers: {
         "Content-Type": "application/json; charset=utf-8"
