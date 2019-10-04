@@ -20,18 +20,22 @@ convertButton.addEventListener("click", () => {
 
     Array.from(new Set(segs.filter((s) => XRegExp("\\p{Han}").test(s)))).mapAsync(async (s) => {
       try {
-        const r = vocabData[s] || (await fetchJSON("/api/zh/vocab/match", {entry: s})).result[0]
-        if (r) {
-          vocabData[s] = r;
+        let r = vocabData[s] || (await fetchJSON("/api/zh/vocab/match", {entry: s})).result[0] || {
+          simplified: s,
+          pinyin: (await fetchJSON("/api/lib/pinyin", {
+            entry: s
+          })).result
+        };
 
-          Array.from(document.getElementsByClassName(s)).map((el) => {
-            el.innerHTML = h(".d-flex-vertical", [
-              h(".simplified", r.simplified),
-              h(".pinyin", r.pinyin),
-              h(".english", r.english)
-            ]).outerHTML;
-          });
-        }
+        vocabData[s] = r;
+
+        Array.from(document.getElementsByClassName(s)).map((el) => {
+          el.innerHTML = h(".d-flex-vertical", [
+            h(".simplified", r.simplified),
+            h(".pinyin", r.pinyin),
+            h(".english", r.english)
+          ]).outerHTML;
+        });
       } catch(e) {
         console.error(e);
       }
