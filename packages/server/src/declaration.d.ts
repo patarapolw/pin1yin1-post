@@ -1,4 +1,4 @@
-declare module "chinese-to-pinyin" {
+declare module 'chinese-to-pinyin' {
   export = pinyin;
 
   function pinyin(str: string, options?: pinyin.PinyinOptions): string;
