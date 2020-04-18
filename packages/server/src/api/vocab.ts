@@ -1,11 +1,12 @@
 import { FastifyInstance } from 'fastify'
 import sqlite3 from 'better-sqlite3'
+import pinyin from 'chinese-to-pinyin'
 
-export default (f: FastifyInstance, opts: any, next: () => void) => {
+export default (f: FastifyInstance, _: any, next: () => void) => {
   const zh = sqlite3('assets/zh.db')
   const stmt = {
     vocabMatch: zh.prepare(`
-    SELECT * FROM vocab 
+    SELECT simplified, pinyin, english FROM vocab 
     WHERE
       simplified = ? OR
       traditional = ?`)
@@ -27,7 +28,10 @@ export default (f: FastifyInstance, opts: any, next: () => void) => {
     const { entry } = req.body
 
     return {
-      result: stmt.vocabMatch.all(entry, entry)
+      result: stmt.vocabMatch.get(entry, entry) || {
+        simplified: entry,
+        pinyin: pinyin(entry, { keepRest: true })
+      }
     }
   })
 

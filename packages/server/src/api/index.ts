@@ -1,14 +1,11 @@
 import { FastifyInstance } from 'fastify'
-import cors from 'fastify-cors'
 import swagger from 'fastify-oas'
 
 import libRouter from './lib'
 import vocabRouter from './vocab'
 
-export default (f: FastifyInstance, opts: any, next: () => void) => {
+export default (f: FastifyInstance, _: any, next: () => void) => {
   if (process.env.NODE_ENV === 'development') {
-    f.register(cors)
-
     f.register(swagger, {
       routePrefix: '/doc',
       swagger: {

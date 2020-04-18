@@ -2,7 +2,7 @@ import { FastifyInstance } from 'fastify'
 import jieba from 'nodejieba'
 import pinyin from 'chinese-to-pinyin'
 
-export default (f: FastifyInstance, opts: any, next: () => void) => {
+export default (f: FastifyInstance, _: any, next: () => void) => {
   f.post('/jieba', {
     schema: {
       tags: ['lib'],
