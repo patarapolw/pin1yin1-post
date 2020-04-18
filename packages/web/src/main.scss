@@ -17,15 +17,29 @@ pre {
 .segment {
   font-size: 30px;
   font-family: serif;
-  display: inline;
+  display: inline-block;
+  position: relative;
+  height: 90px;
+  max-height: 90px;
+  background-color: white;
+  
+  .simplified {
+    z-index: 50;
+  }
   
   .pinyin, .english {
     font-size: 10px;
     max-width: 10em;
-    max-height: 30px;
-    overflow: scroll;
+    overflow: visible;
     overflow-wrap: break-word;
     word-wrap: break-word;
     hyphens: auto;
+    background-color: white;
+    z-index: 0;
+    padding: 2px;
+
+    &:hover {
+      z-index: 100 !important;
+    }
   }
 }

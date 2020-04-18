@@ -1,0 +1,24 @@
+{
+  "name": "web",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "parcel watch -d ../server/public src/index.html",
+    "build": "parcel build -d dist src/index.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/hyperscript": "0.0.3",
+    "@types/xregexp": "^4.3.0",
+    "hyperscript": "^2.0.2",
+    "xregexp": "^4.3.0"
+  },
+  "devDependencies": {
+    "parcel": "^1.12.4",
+    "sass": "^1.26.3",
+    "typescript": "^3.8.3"
+  }
+}

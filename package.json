@@ -1,50 +1,32 @@
 {
-  "devDependencies": {
-    "@types/http-proxy-middleware": "^0.19.3",
-    "@types/parcel-bundler": "^1.12.1",
-    "concurrently": "^4.1.2",
-    "cssnano": "^4.1.10",
-    "http-proxy-middleware": "^0.20.0",
-    "parcel-bundler": "^1.12.3",
-    "sass": "^1.23.0",
-    "ts-node": "^8.4.1",
-    "ts-node-dev": "^1.0.0-pre.43",
-    "typescript": "^3.6.3"
-  },
   "name": "pin1yin1-post",
-  "description": "Similar to <https://pin1yin1.com>, but uses POST requests, i.e. no string length limit.",
   "version": "1.0.0",
   "private": true,
-  "main": "build/server.js",
-  "scripts": {
-    "start": "node -r esm .",
-    "dev:server": "ts-node-dev server/server.ts",
-    "dev:parcel": "ts-node server/parcel.ts",
-    "dev": "concurrently 'npm:dev:*'",
-    "clean": "rm -rf dist",
-    "build:server": "npm run tsc",
-    "build:parcel": "parcel build --public-url '.' web/index.html",
-    "build": "npm run build:server && npm run build:parcel",
-    "tsc": "tsc -p tsconfig.server.json",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "Pacharapol Withayasakpunt <patarapolw@gmail.com> (https://polvcode.dev)",
-  "license": "MIT",
-  "browserslist": [
-    "last 4 Chrome versions"
+  "description": "Similar to <https://pin1yin1.com>, but uses POST requests, i.e. no string length limit.",
+  "keywords": [
+    "chinese",
+    "pinyin",
+    "mandarin"
   ],
-  "dependencies": {
-    "@types/better-sqlite3": "^5.4.0",
-    "@types/express": "^4.17.1",
-    "@types/hyperscript": "0.0.3",
-    "@types/xregexp": "^3.0.30",
-    "better-sqlite3": "^5.4.3",
-    "chinese-to-pinyin": "^1.1.2",
-    "esm": "^3.2.25",
-    "express": "^4.17.1",
-    "hyperscript": "^2.0.2",
-    "nodejieba": "^2.3.2",
-    "xregexp": "^4.2.4"
+  "license": "MIT",
+  "author": "Pacharapol Withayasakpunt <patarapolw@gmail.com> (https://polvcode.dev)",
+  "scripts": {
+    "dev": "concurrently 'cd packages/server && npm run dev' 'cd packages/web && npm run dev'",
+    "build": "docker build -t pin1yin1-post .",
+    "start": "docker run -p 8080:8080 pin1yin1-post",
+    "deploy": "heroku container:push web"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.28.0",
+    "@typescript-eslint/parser": "^2.28.0",
+    "concurrently": "^5.1.0",
+    "eslint": "^6.8.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "eslint-plugin-vue": "^6.2.2",
+    "typescript": "^3.8.3"
   }
 }
