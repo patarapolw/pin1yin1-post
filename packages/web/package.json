@@ -11,7 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@types/hyperscript": "0.0.3",
+    "@types/hyperscript": "0.0.4",
     "@types/xregexp": "^4.3.0",
     "hyperscript": "^2.0.2",
     "xregexp": "^4.3.0"
